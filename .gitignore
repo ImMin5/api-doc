@@ -1,6 +1,7 @@
 *.swp
 *.bak
 .idea
-dist/python
+dist
 __pycache__
 venv
+.hugo_build.lock

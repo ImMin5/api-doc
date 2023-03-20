@@ -1,13 +1,13 @@
-name: SpaceONE Buff API
+name: Cloudforet Buff API
 
 on:
   push:
     branches:
-    - master
+    - test/gitaction
 
 jobs:
   deploy:
-    if: github.repository_owner == 'cloudforet-io'
+    if: github.repository_owner == 'ImMin5'
     runs-on: ubuntu-latest
 
     steps:
@@ -15,11 +15,11 @@ jobs:
     - name: Set environment virables
       env:
         SERVICE: api
-        PYPI_UPLOAD: true # upload pypi if this is true
+        PYPI_UPLOAD: false # upload pypi if this is true
         # LOCATION points the parent directory
         LOCATION_SETUP_PY: dist/python # optional. for pypi upload
         LOCATION_VERSION: . # the location for VERSION file (ex- . means the location of VERSION is ./VERSION)
-        ARTIFACT_VERSION: ./artifact/json
+        ARTIFACT_VERSION: ./
         IS_SUDO: true
       run: |
         echo "SERVICE=$SERVICE" >> $GITHUB_ENV
@@ -27,7 +27,7 @@ jobs:
         echo "LOCATION_SETUP_PY=$LOCATION_SETUP_PY" >> $GITHUB_ENV
         echo "LOCATION_VERSION=$LOCATION_VERSION" >> $GITHUB_ENV
         echo "IS_SUDO=$IS_SUDO" >> $GITHUB_ENV
-        echo "ARTIFACT_VERSION=$ARTIFACT_VERSION" >> $GITHUB_ENV
+        echo "ARTIFACT_VERSION=$LOCATION_VERSION" >> $GITHUB_ENV
 
     - name: Clone master branch
       uses: actions/checkout@v2
@@ -54,12 +54,12 @@ jobs:
       id: check_files
       uses: andstor/file-existence-action@v1
       with:
-        files: "artifact/json/VERSION"
+        files: "VERSION"
 
     - name: File exists
       if: steps.check_files.outputs.files_exists == 'true'
       run: |
-        echo "ARTIFACT_VERSION=$(cat $ARTIFACT_VERSION/VERSION)" >> $GITHUB_ENV
+        echo "ARTIFACT_VERSION=$(cat $ARTIFACT_VERSION)" >> $GITHUB_ENV
 
     - name: Check version updates # Check which version is latest, if doc version is higher and then create a release branch
       if: env.ARTIFACT_VERSION > env.API_DOC_VERSION
@@ -83,18 +83,19 @@ jobs:
         pip install setuptools wheel twine
         pip install PyYAML
         pip install Jinja2
-        pip install pydash
     - name: generate markdowns
       run: |
         cd bin
         python markdown.py
     - name: Commit files # transfer the new html files back into the repository
       run: |
-        git config --local user.name "SpaceONE"
+        git config --local user.name "cloudforet"
         git add .
         git commit -m "Update modified markdowns"
     - name: Push changes # push the output folder to your repo
       uses: ad-m/github-push-action@master
       with:
+        workflow: Deploy Cloudforet API Documentation site to Pages
         github_token: ${{ secrets.GITHUB_TOKEN }}
         force: true
+
