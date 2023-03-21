@@ -1,4 +1,4 @@
-name: Cloudforet Buff API
+name: Cloudforet Buff API test git-action
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set environment virables
+    - name: Set environment variables
       env:
         SERVICE: api
         PYPI_UPLOAD: false # upload pypi if this is true
