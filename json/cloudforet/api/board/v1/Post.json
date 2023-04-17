@@ -860,7 +860,7 @@
             },
             {
               "name": "writer",
-              "description": "is_required: false",
+              "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -884,7 +884,7 @@
             },
             {
               "name": "domain_id",
-              "description": "is_required: false",
+              "description": "is_required: true",
               "label": "",
               "type": "string",
               "longType": "string",

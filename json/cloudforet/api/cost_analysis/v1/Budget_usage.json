@@ -305,7 +305,7 @@
           "name": "BudgetUsage",
           "longName": "BudgetUsage",
           "fullName": "spaceone.api.cost_analysis.v1.BudgetUsage",
-          "description": "",
+          "description": "Gets a list of all BudgetUsages. You can use a query to get a filtered list of BudgetUsages.",
           "methods": [
             {
               "name": "list",
