@@ -178,6 +178,7 @@ def json_to_markdown():
         _make_markdown_file(json_file_path)
 
     for service in os.listdir(os.path.join(DIST_JSON_DIR, PROJECT, 'api')):
+        print(DIST_JSON_DIR)
         _index_path = os.path.join(DOCS_DIR, service)
         _make_index_markdown_file(_index_path)
 
