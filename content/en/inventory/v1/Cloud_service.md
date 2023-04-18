@@ -36,7 +36,7 @@ desc: A CloudService is data of an `instance` of a `resource`. A CloudService fo
 
 ### create
 
-> **POST** /inventory/v1/cloud-service/create
+> **POST** inventory/v1/cloud-service/create
 >
 
 
@@ -54,7 +54,7 @@ desc: A CloudService is data of an `instance` of a `resource`. A CloudService fo
 
 ### update
 
-> **POST** /inventory/v1/cloud-service/update
+> **POST** inventory/v1/cloud-service/update
 >
 
 
@@ -72,7 +72,7 @@ desc: A CloudService is data of an `instance` of a `resource`. A CloudService fo
 
 ### delete
 
-> **POST** /inventory/v1/cloud-service/delete
+> **POST** inventory/v1/cloud-service/delete
 >
 
 
@@ -90,7 +90,7 @@ desc: A CloudService is data of an `instance` of a `resource`. A CloudService fo
 
 ### get
 
-> **POST** /inventory/v1/cloud-service/get
+> **POST** inventory/v1/cloud-service/get
 >
 
 
@@ -108,7 +108,7 @@ desc: A CloudService is data of an `instance` of a `resource`. A CloudService fo
 
 ### list
 
-> **POST** /inventory/v1/cloud-service/list/inventory/v1/cloud-service/list
+> **POST** /inventory/v1/cloud-service/list
 >
 
 
