@@ -1,8 +1,6 @@
 *.swp
 *.bak
 .idea
-dist
 __pycache__
 venv
 .hugo_build.lock
-!dist/json
