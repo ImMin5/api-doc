@@ -37,8 +37,8 @@ defaults:
     shell: bash
 
 env:
-  BRANCH: test/git
-  VERSION: 1.0.0
+  BRANCH: ${{ github.event.inputs.branch }}
+  VERSION: ${{ github.event.inputs.version }}
 
 jobs:
   # Build job
