@@ -66,22 +66,22 @@ jobs:
           pip install PyYAML
           pip install Jinja2
 
- #     - name: generate markdowns
- #       run: |
- #         ls -al
- #         cd bin
- #         python markdown.py
+      - name: generate markdowns
+        run: |
+          ls -al
+          cd bin
+          python markdown.py
 
- #     - name: Commit files # transfer the new html files back into the repository
- #       uses: stefanzweifel/git-auto-commit-action@v4
- #       with:
- #         branch: test/git
- #         commit_message: "[CI] api has been built"
- #         commit_user_name: ImmMin5
- #         commit_user_email: iam.minhokim@gmail.com
- #         commit_author: ImMin5 <mino@megazone.com>
- #         push_options: '--force'
- #         tagging_message: ${{ env.VERSION }}
+      - name: Commit files # transfer the new html files back into the repository
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: test/git
+          commit_message: "[CI] api has been built"
+          commit_user_name: ImmMin5
+          commit_user_email: iam.minhokim@gmail.com
+          commit_author: ImMin5 <mino@megazone.com>
+          push_options: '--force'
+          tagging_message: ${{ env.VERSION }}
 
       - name: Install Hugo CLI
         run: |
@@ -94,6 +94,8 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+          ref: ${{ env.BRANCH }}
+          
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
