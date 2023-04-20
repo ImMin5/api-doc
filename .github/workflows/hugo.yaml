@@ -75,7 +75,7 @@ jobs:
       - name: Commit files # transfer the new html files back into the repository
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          branch: test/git
+          branch: ${{ env.BRANCH }}
           commit_message: "[CI] api has been built"
           commit_user_name: ImmMin5
           commit_user_email: iam.minhokim@gmail.com
