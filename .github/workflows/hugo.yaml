@@ -51,6 +51,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          submodules: recursive
+          fetch-depth: 0
           ref: ${{ env.BRANCH }}
           token: ${{ secrets.PAT_TOKEN }}
 
@@ -66,13 +68,12 @@ jobs:
           pip install PyYAML
           pip install Jinja2
 
-      - name: generate markdowns
+      - name: Generate markdown files
         run: |
-          ls -al
           cd bin
           python markdown.py
 
-      - name: Commit files # transfer the new html files back into the repository
+      - name: Commit files to ${{ env.BRANCH }} branch # transfer the new html files back into the repository
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: ${{ env.BRANCH }}
